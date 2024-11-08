@@ -26,15 +26,18 @@ def read_json_products(file_patch: str) -> list[Category]:
                 logger.debug(f"Чтение файла {file_patch} завершено успешно")
                 return [
                     Category(
-                        c.name,
-                        c.description,
-                        [Product(p.name, p.description, p.price, p.quantity) for p in c.products],
+                        c.get("name"),
+                        c.get("description"),
+                        [
+                            Product(p.get("name"), p.get("description"), p.get("price"), p.get("quantity"))
+                            for p in c.get("products")
+                        ],
                     )
                     for c in categorys
                 ]
 
             else:
-                logger.debug(f"Файл {file_patch} не содержит список операций")
+                logger.debug(f"Файл {file_patch} не содержит список категорий")
                 return []
     except Exception as e:
         logger.error("В процессе чтения файла возникла ошибка:", exc_info=e)

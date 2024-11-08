@@ -12,9 +12,18 @@ class Category:
     products: list[Product]
 
     def __init__(self, name: str, description: str, products: list[Product]):
+        if type(name) is not str:
+            raise TypeError("Имя категории должно быть строкой")
         self.name = name
+        if type(description) is not str:
+            raise TypeError("Описание категории должно быть строкой")
         self.description = description
-        Category.category_count += 1
-        self.products = products
+        if type(products) is not list:
+            raise TypeError("Продукты должны быть переданы списком")
         for product in products:
-            Category.product_count += product.quantity
+            if type(product) is not Product:
+                raise TypeError("В списке переданы не продуты")
+        self.products = products
+
+        Category.category_count += 1
+        Category.product_count += len(products)
