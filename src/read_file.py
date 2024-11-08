@@ -17,7 +17,7 @@ logger.addHandler(file_handler)
 
 
 def read_json_products(file_patch: str) -> list[Category]:
-    """Функиция чтения json файла, учитываем только списки"""
+    """Функция чтения json файла, учитываем только списки"""
     try:
         logger.debug(f"Чтение файла {file_patch}")
         with open(file_patch, encoding="utf-8") as f:

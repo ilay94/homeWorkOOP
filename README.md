@@ -29,7 +29,21 @@ poetry run pytest --cov
 pytest --cov=src --cov-report=html
 ```
 ## Использование:
+#### Класс Product - описывает продукты и товары содержит поля:
+```name: str ```  - название продукта 
+```description: str ``` - описание продукта
+```price: float ``` - цена продукта
+```quantity: int ``` - количество продукта
 
+#### Класс Category - описывает категорию продуктов
+```name: str ```  - название категории
+```description: str ```  - описание категории
+```products: list[Product] ```  - список продуктов в категории
+```category_count```  - количество созданных категорий
+```product_count```  - количество позиций товаров всех категорий
+
+#### Модуль read_file
+```read_json_products(file_patch: str) -> list[Category]:``` - функция чтения категорий из json файла, учитываем только списки
 
 ## Документация:
 
