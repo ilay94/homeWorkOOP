@@ -1,4 +1,5 @@
 import os
+
 import pytest
 
 from src.read_file import read_json_products

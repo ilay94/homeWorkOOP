@@ -21,17 +21,17 @@ class Product:
         self.quantity = quantity
 
     @property
-    def price(self)-> float:
-        return  self.__price
+    def price(self) -> float:
+        return self.__price
 
     @price.setter
     def price(self, new_price: float):
         if new_price <= 0:
-            print('Цена не должна быть нулевая или отрицательная')
+            print("Цена не должна быть нулевая или отрицательная")
             return
         if new_price < self.__price:
             while True:
-                user_answer = input("Новая цена меньше, понизить цену товара? [y (Да)\ n (Нет)]").lower()
+                user_answer = input("Новая цена меньше, понизить цену товара? [y (Да)\\ n (Нет)]").lower()
                 if user_answer == "n":
                     return
                 elif user_answer == "y":
@@ -50,4 +50,9 @@ class Product:
                         old_product.price = product_params.get("price")
                     return old_product
         else:
-            return Product(product_params.get("name"), product_params.get("description"), product_params.get("price"), product_params.get("quantity"))
+            return Product(
+                product_params.get("name"),
+                product_params.get("description"),
+                product_params.get("price"),
+                product_params.get("quantity"),
+            )

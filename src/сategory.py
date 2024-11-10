@@ -34,4 +34,4 @@ class Category:
 
     @property
     def products(self) -> str:
-        return '\n'.join([f'{p.name}, {p.price} руб. Остаток: {p.quantity} шт' for p in self.__products])
+        return "\n".join([f"{p.name}, {p.price} руб. Остаток: {p.quantity} шт" for p in self.__products])
