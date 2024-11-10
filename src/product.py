@@ -22,10 +22,12 @@ class Product:
 
     @property
     def price(self) -> float:
+        """Возвращает цену продукта"""
         return self.__price
 
     @price.setter
     def price(self, new_price: float):
+        """Устанавливает цену на продукт, проверяет на отрицательность, проверяет на уменьшение цены"""
         if new_price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
             return
@@ -40,6 +42,7 @@ class Product:
 
     @classmethod
     def new_product(cls, product_params: dict, product_list=None):
+        """Создает новый продукт по переданному словарю, может проверять наличие похожего товара в переданном списке"""
         if product_list is None:
             product_list = []
         if len(product_list) > 0 and product_params.get("name") in [p.name for p in product_list]:

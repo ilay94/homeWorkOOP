@@ -29,9 +29,11 @@ class Category:
         Category.product_count += len(products)
 
     def add_product(self, product: Product):
+        """Добавляет продукт в список продуктов этой категории"""
         self.__products.append(product)
-        Category.category_count += 1
+        Category.product_count += 1
 
     @property
     def products(self) -> str:
+        """Возвращает список продуктов категории в виде текста"""
         return "\n".join([f"{p.name}, {p.price} руб. Остаток: {p.quantity} шт" for p in self.__products])

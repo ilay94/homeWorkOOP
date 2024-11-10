@@ -12,12 +12,15 @@ def test_category_init(category_init):
     )
     assert Category.category_count == 1
     assert Category.product_count == 1
+    Category.product_count = 0
+    Category.category_count = 0
 
 
-def test_category_product_count(category_tv_init):
+def test_category_product_count(category_init, category_tv_init):
     assert Category.category_count == 2
     assert Category.product_count == 2
     Category.product_count = 0
+    Category.category_count = 0
 
 
 @pytest.mark.parametrize(
@@ -38,8 +41,12 @@ def test_product_create(name, description, products, expected_exception):
 
 def test_products_getter(category_init):
     assert category_init.products == "Samsung Test Ultra, 500.0 руб. Остаток: 5 шт"
+    Category.product_count = 0
+    Category.category_count = 0
 
 
 def test_add_product_new(category_init, product_init_alt):
     category_init.add_product(product_init_alt)
     assert category_init.product_count == 2
+    Category.product_count = 0
+    Category.category_count = 0
