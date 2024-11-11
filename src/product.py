@@ -20,6 +20,12 @@ class Product:
             raise TypeError("Количество продукта должно быть целым")
         self.quantity = quantity
 
+    def __str__(self):
+        return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
+
+    def __add__(self, other):
+        return self.__price * self.quantity + other.__price * other.quantity
+
     @property
     def price(self) -> float:
         """Возвращает цену продукта"""
