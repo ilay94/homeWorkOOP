@@ -21,10 +21,14 @@ class Product:
         self.quantity = quantity
 
     def __str__(self):
-        return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        return self.__price * self.quantity + other.__price * other.quantity
+        """Складываем товары, учитываем цены и количество"""
+        if type(other) is Product:
+            return self.__price * self.quantity + other.__price * other.quantity
+        else:
+            raise TypeError("Аргументы должны быть класса Product")
 
     @property
     def price(self) -> float:

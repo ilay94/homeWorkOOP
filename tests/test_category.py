@@ -51,3 +51,10 @@ def test_add_product_new(category_init, product_init_alt):
     Category.product_count = 0
     Category.category_count = 0
 
+
+def test_get_products(category_init):
+    assert str(category_init.get_products[0]) == "Samsung Test Ultra, 500.0 руб. Остаток: 5 шт."
+
+
+def test_str(category_init):
+    assert str(category_init) == "Смартфоны, количество продуктов: 5 шт."

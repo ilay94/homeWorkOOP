@@ -91,3 +91,18 @@ def test_new_product_init_list(product_params, product_init_list, expected_price
     new_product = Product.new_product(product_params, product_init_list)
     assert new_product.price == expected_price
     assert new_product.quantity == expected_quantity
+
+
+def test_str(product_init):
+    assert str(product_init) == "Samsung Test Ultra, 500.0 руб. Остаток: 5 шт."
+
+
+def test_add(product_init, product_init_alt):
+    assert product_init + product_init_alt == 5000.0
+
+
+@pytest.mark.parametrize("other", [("50"), ([]), (None)])
+def test_add_incorrect_other(product_init, other):
+    with pytest.raises(TypeError):
+        result = product_init + other
+        print(result)
