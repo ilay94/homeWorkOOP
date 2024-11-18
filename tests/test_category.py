@@ -52,6 +52,11 @@ def test_add_product_new(category_init, product_init_alt):
     Category.category_count = 0
 
 
+def test_add_product_incorrect(category_init):
+    with pytest.raises(TypeError):
+        category_init.add_product("Не продукт")
+
+
 def test_get_products(category_init):
     assert str(category_init.get_products[0]) == "Samsung Test Ultra, 500.0 руб. Остаток: 5 шт."
 

@@ -20,6 +20,8 @@ class Product:
         if not type(quantity) in (int, float):
             raise TypeError("Количество продукта должно быть целым")
         self.quantity = quantity
+        if type(color) is not str:
+            raise TypeError("Цвет продукта должен быть строкой")
         self.color = color
 
     def __str__(self):
@@ -27,7 +29,7 @@ class Product:
 
     def __add__(self, other):
         """Складываем товары, учитываем цены и количество"""
-        if type(other) is Product:
+        if isinstance(other, Product) and type(other) is type(self):
             return self.__price * self.quantity + other.__price * other.quantity
         else:
             raise TypeError("Аргументы должны быть класса Product")
