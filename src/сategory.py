@@ -21,7 +21,7 @@ class Category:
         if type(products) is not list:
             raise TypeError("Продукты должны быть переданы списком")
         for product in products:
-            if type(product) is not Product:
+            if not isinstance(product, Product):
                 raise TypeError("В списке переданы не продуты")
         self.__products = products
 
@@ -33,7 +33,10 @@ class Category:
 
     def add_product(self, product: Product):
         """Добавляет продукт в список продуктов этой категории"""
-        self.__products.append(product)
+        if isinstance(product, Product) or issubclass(product.__class__, Product):
+            self.__products.append(product)
+        else:
+            raise TypeError("Попытка добавить не продукт")
         Category.product_count += 1
 
     @property
