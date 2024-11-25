@@ -3,4 +3,5 @@ from src.mixinInitPrint import MixinInitPrint
 
 
 class Product(BaseProduct, MixinInitPrint):
+    """Класс описывающий продукт"""
     pass
