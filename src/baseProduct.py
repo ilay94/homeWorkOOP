@@ -1,6 +1,3 @@
-from src.mixinInitPrint import MixinInitPrint
-
-
 class BaseProduct:
     """Базовый класс описывающий продукт"""
 
