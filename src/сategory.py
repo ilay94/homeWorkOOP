@@ -1,4 +1,4 @@
-from src.product import Product
+from src.product import BaseProduct
 
 
 class Category:
@@ -9,9 +9,9 @@ class Category:
 
     name: str
     description: str
-    __products: list[Product]
+    __products: list[BaseProduct]
 
-    def __init__(self, name: str, description: str, products: list[Product]):
+    def __init__(self, name: str, description: str, products: list[BaseProduct]):
         if type(name) is not str:
             raise TypeError("Имя категории должно быть строкой")
         self.name = name
@@ -21,7 +21,7 @@ class Category:
         if type(products) is not list:
             raise TypeError("Продукты должны быть переданы списком")
         for product in products:
-            if not isinstance(product, Product):
+            if not isinstance(product, BaseProduct):
                 raise TypeError("В списке переданы не продуты")
         self.__products = products
 
@@ -31,16 +31,16 @@ class Category:
     def __str__(self):
         return f"{self.name}, количество продуктов: {sum([p.quantity for p in self.__products])} шт."
 
-    def add_product(self, product: Product):
+    def add_product(self, product: BaseProduct):
         """Добавляет продукт в список продуктов этой категории"""
-        if isinstance(product, Product) or issubclass(product.__class__, Product):
+        if isinstance(product, BaseProduct) or issubclass(product.__class__, BaseProduct):
             self.__products.append(product)
         else:
             raise TypeError("Попытка добавить не продукт")
         Category.product_count += 1
 
     @property
-    def get_products(self) -> list[Product]:
+    def get_products(self) -> list[BaseProduct]:
         return self.__products
 
     @property

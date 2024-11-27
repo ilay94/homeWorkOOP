@@ -1,11 +1,9 @@
-class Product:
-    """Класс описывающий продукт"""
+from src.baseProduct import BaseProduct
+from src.mixinInitPrint import MixinInitPrint
 
-    name: str
-    description: str
-    price: float
-    quantity: int
-    color: str
+
+class Product(MixinInitPrint, BaseProduct):
+    """Класс описывающий продукт"""
 
     def __init__(self, name: str, description: str, price: float, quantity: int, color: str = ""):
         if type(name) is not str:
@@ -24,15 +22,7 @@ class Product:
             raise TypeError("Цвет продукта должен быть строкой")
         self.color = color
 
-    def __str__(self):
-        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
-
-    def __add__(self, other):
-        """Складываем товары, учитываем цены и количество"""
-        if isinstance(other, Product) and type(other) is type(self):
-            return self.__price * self.quantity + other.__price * other.quantity
-        else:
-            raise TypeError("Аргументы должны быть класса Product")
+        super().__init__()
 
     @property
     def price(self) -> float:
@@ -53,6 +43,16 @@ class Product:
                 elif user_answer == "y":
                     break
         self.__price = new_price
+
+    def __str__(self):
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        """Складываем товары, учитываем цены и количество"""
+        if isinstance(other, Product) and type(other) is type(self):
+            return self.__price * self.quantity + other.__price * other.quantity
+        else:
+            raise TypeError("Аргументы должны быть класса Product")
 
     @classmethod
     def new_product(cls, product_params: dict, product_list=None):
