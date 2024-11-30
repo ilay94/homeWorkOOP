@@ -55,4 +55,4 @@ class Category:
                 raise ValueError("В категории отсутствуют продукты")
             return sum([p.price for p in self.__products]) / len(self.__products)
         except Exception:
-            return  0.0
+            return 0.0

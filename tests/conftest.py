@@ -55,5 +55,14 @@ def category_tv_init(product_init):
 
 
 @pytest.fixture
+def category_init_empy_product():
+    return Category(
+        "Телевизоры",
+        "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
+        [],
+    )
+
+
+@pytest.fixture
 def product_init_list(product_init, product_init_alt):
     return [product_init, product_init_alt]
