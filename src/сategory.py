@@ -47,3 +47,12 @@ class Category:
     def products(self) -> str:
         """Возвращает список продуктов категории в виде текста"""
         return "\n".join([str(p) for p in self.__products])
+
+    def middle_price(self):
+        """Возвращает среднию цену продуктов в категории"""
+        try:
+            if len(self.__products) == 0:
+                raise ValueError("В категории отсутствуют продукты")
+            return sum([p.price for p in self.__products]) / len(self.__products)
+        except Exception:
+            return 0.0

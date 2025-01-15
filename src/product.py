@@ -17,6 +17,8 @@ class Product(MixinInitPrint, BaseProduct):
         self.__price = price
         if not type(quantity) in (int, float):
             raise TypeError("Количество продукта должно быть целым")
+        if quantity <= 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
         self.quantity = quantity
         if type(color) is not str:
             raise TypeError("Цвет продукта должен быть строкой")

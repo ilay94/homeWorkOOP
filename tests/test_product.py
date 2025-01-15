@@ -23,6 +23,7 @@ def test_product_init(product_init):
         ("Samsung Test Ultra", "Описание", None, 1, TypeError),
         ("Samsung Test Ultra", "Описание", 500.0, [], TypeError),
         ("Samsung Test Ultra", "Описание", 500.0, None, TypeError),
+        ("Samsung Test Ultra", "Описание", 500.0, 0, ValueError),
     ],
 )
 def test_product_create(name, description, price, quantity, expected_exception):

@@ -63,3 +63,11 @@ def test_get_products(category_init):
 
 def test_str(category_init):
     assert str(category_init) == "Смартфоны, количество продуктов: 5 шт."
+
+
+def test_middle_price(category_init):
+    assert category_init.middle_price() == 500.0
+
+
+def test_test_middle_price_empy_product(category_init_empy_product):
+    assert category_init_empy_product.middle_price() == 0.0

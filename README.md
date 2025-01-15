@@ -75,6 +75,8 @@ pytest --cov=src --cov-report=html
 
 ```get_products: list[Product]``` - возвращает список продуктов в виде объектов
 
+```middle_price``` - возвращает среднию цену среди продуктов в категории
+
 ### Класс MixinInitPrint - миксин то какого класса был создан продукт и с какими параметрами
 
 ### Класс IteratorProductInCategory
